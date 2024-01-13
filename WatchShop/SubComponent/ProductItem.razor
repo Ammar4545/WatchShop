@@ -1,0 +1,29 @@
+﻿@using WatchShop.Models
+<div class="col-sm-4 p-2">
+    <div class="card">
+        <div class="d-flex justify-content-center p-2">
+            <img src="@Product.ImageUrl" height="220" alt="shit" />
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">
+                <a href="/product/@Product.Id">@Product.NAme</a>
+            </h4>
+            <p class="card-text">@Product.Description.Substring(0, Math.Min(40, Product.Description.Length))</p>
+            <p class="text-secondary text-center h2 font-weight-bold">
+                @Product.Price.ToString("C")
+            </p>
+            <a href="#" class="btn btn-danger w-100">Add To Cart</a>
+        </div>
+    </div>
+
+</div>
+
+
+    @code {
+        
+
+        [Parameter]
+        public  Product Product { get; set; }
+
+
+    }

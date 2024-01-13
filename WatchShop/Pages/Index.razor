@@ -1,0 +1,28 @@
+﻿@page "/"
+
+@inject WatchShop.Services.ProductService productService
+@using WatchShop.Models
+@using WatchShop.SubComponent
+
+<div class="container">
+    <div class="row">
+        @foreach (var product in _products)
+        {
+            //<ProductItem Description="@product.Description" Price="@product.Price" ImageUrl="@product.ImageUrl" NAme="@product.NAme"></ProductItem>
+            <ProductItem Product="@product"></ProductItem>
+        }
+
+
+    </div>
+</div>
+
+@code{
+    List<Product> _products = new List<Product>();
+    protected override void OnInitialized()
+    {
+        //this list contains all products which i will show it
+        _products = productService.GetProducts();
+        base.OnInitialized();
+    }
+
+}
